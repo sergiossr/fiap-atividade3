@@ -1,0 +1,28 @@
+.footer{
+    background-color:#F39B9B;
+    margin: 0 auto;
+    display: flex;
+    justify-content:center;
+    position:relative;
+    width: 100%;
+    align-items:center;
+    margin-top: 0px;
+}
+
+.texto {
+    display: flex;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .icones{
+    display:flex;
+    margin-bottom: 5px;
+    margin-top: 0px;
+    align-items: center;
+    justify-content: center;
+  }
+
+

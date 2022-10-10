@@ -1,0 +1,29 @@
+.predidosContainer{
+    margin: 0 auto;
+    width: 1000px;
+    height: 302px;
+    border: 1px solid #000000;
+    background-color: #EEE1E1;
+    justify-content: center;
+    border-radius: 40px;
+    margin-top: 5px;
+    margin-bottom: 40px;   
+}
+
+.h1{
+    margin-bottom: 5px;
+    justify-content: center;
+    align-content: center;
+    display: flex;
+    flex: 1;
+}
+
+.detalheContainer{
+
+width: 300px;
+height: 150px;
+border: 1px solid #000000;
+background-color: #DECFCF;
+margin-left: 100px;
+margin-top: 20px;
+}
