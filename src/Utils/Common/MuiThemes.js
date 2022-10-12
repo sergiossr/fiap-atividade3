@@ -49,7 +49,6 @@ const MuiThemes = ({ children }) => {
               marginBottom: "15px",
               borderRadius: 8,
               "&:hover": {
-                
                 color: Colors.White,
               },
               
@@ -59,17 +58,35 @@ const MuiThemes = ({ children }) => {
             props: { variant: "secondary" },
             style: {
               textTransform: "none",
-              background: Colors.White,
-              border: "2px solid " + Colors.SecondaryDark,
-              boxSizing: "border-box",
+              background: Colors.Grenn,
+              
               minWidth: 200,
               fontSize: Sizes.FontSizeSM,
-              fontWeight: 700,
+              fontWeight: "bold",
               lineHeight: "27px",
               borderRadius: 24,
-              color: Colors.SecondaryDark,
-              marginTop: "15px",
-              marginBottom: "15px",
+              color: Colors.Black,
+              "&:hover": {
+                background: Colors.SecondaryMedium,
+                color: Colors.White,
+              },
+              "&:active": {
+                background: Colors.SecondaryDark,
+                color: Colors.White,
+              },
+            },
+          },
+          {
+            props: { variant: "third" },
+            style: {
+              textTransform: "none",
+              background: Colors.Grenn,
+              minWidth: 300,
+              fontSize: Sizes.FontSizeLG,
+              fontWeight: "bolder",
+              lineHeight: "80px",
+              borderRadius: 24,
+              color: Colors.Black,
               "&:hover": {
                 background: Colors.SecondaryMedium,
                 color: Colors.White,

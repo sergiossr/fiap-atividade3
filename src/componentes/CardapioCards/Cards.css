@@ -1,0 +1,15 @@
+.titulo{
+    margin-bottom: 10px;
+    justify-content: center;
+    align-content: center;
+    display: flex;
+    flex: 1;
+    font-weight: bold;
+}
+
+.AdicionarBTN{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+}
