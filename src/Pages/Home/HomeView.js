@@ -1,26 +1,41 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
 
-import '../../Utils/Common/Main.css';
 //Importa os componentes do Bootstrap
-import { Container, Row } from 'react-bootstrap';
+import { Row } from 'react-bootstrap';
 //Importa os componentes
 import Header from '../../componentes/Header/Header';
 import Footer from '../../componentes/Footer/Footer';
-import ClientForm from '../../componentes/ClientForm/ClientForm';
-import Pedidos from '../../componentes/Pedidos/Pedidos';
+import './Home.css'
+import UseAPI from '../../Services/APIs/Common/UseAPI';
+import APICardapio from '../../Services/APIs/CardapioAPI/CardapioAPI'
+import Container from "@mui/material/Container";
 
+function HomeView(props) {
+  const getCardapioAPI = UseAPI(APICardapio.getCardapio)
+  
+  useEffect(() => {
+    
+    getCardapioAPI
+      .requestPromise()
+      .then((info) => {
+        console.log(info);
+      })
+      .catch((info) => {
+        console.log(info);
+      });
+  }, [])
 
-//import Footer from '../components/footer/Footer';
-function HomeView(props ) {
+   
+
     return (
-        <Container maxWidth = 'lg'>
+        <Container maxWidth = 'lg' >
             <Row>
                 <Header />
             </Row>
-            <Row>
-                    <Pedidos/>
-                    <ClientForm/>
+            <Row className='HomeContainer'>
+                    <h1>TELA HOME</h1>
             </Row>
+
             <Row>
                 <Footer/>
             </Row>
@@ -28,3 +43,6 @@ function HomeView(props ) {
     );
 }
 export default HomeView;
+
+
+

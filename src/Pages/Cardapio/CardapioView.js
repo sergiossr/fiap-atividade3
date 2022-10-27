@@ -1,5 +1,4 @@
 import React from 'react';
-import '../../Utils/Common/Main.css';
 //Importa os componentes do Bootstrap
 import { Container, Row } from 'react-bootstrap';
 //Importa os componentes
@@ -18,16 +17,16 @@ const CardapioView = () => {
                 <Header />
             </Row>
             <Container className='CardapioContainer'>
-                <div className='item1'>
+                <div >
                     <CardsPizzaTradicional/>
                 </div>
-                <div className='item2'>
+                <div >
                     <CardsPizzaClassica/>
                 </div>
-                <div className='item3'> 
+                <div > 
                     <CardsPizzaExclusiva/>
                 </div>
-                <div className='item4'> 
+                <div > 
                     <CartBox/>
                 </div>
             </Container>  
