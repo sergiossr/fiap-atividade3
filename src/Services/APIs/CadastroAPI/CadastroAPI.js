@@ -7,7 +7,7 @@ const config = {
   }
 };
 
-const postCliente = (data) => API.post("/cliente/create", data);
+const postCliente = (payload) => API.post("/cliente/create", payload);
 const getCliente = () => API.get("/clientes");
 
 const exportedObject = {

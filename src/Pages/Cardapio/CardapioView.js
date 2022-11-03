@@ -12,7 +12,7 @@ import CartBox from '../../componentes/CartBox/CartBox';
 
 const CardapioView = () => {
     return (
-        <Container maxWidth = 'xl' >
+        <Container  >
             <Row>
                 <Header />
             </Row>

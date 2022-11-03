@@ -13,7 +13,7 @@ import Pedidos from '../../componentes/Pedidos/Pedidos';
 //import Footer from '../components/footer/Footer';
 function ClienteCadastroView(props ) {
     return (
-        <Container maxWidth = 'lg'>
+        <Container>
             <Row>
                 <Header />
             </Row>

@@ -8,11 +8,11 @@ import {BrowserRouter} from "react-router-dom";
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
-        <MuiThemes>
-          <RouteController/>
-        </MuiThemes>
-    </BrowserRouter>
+    <MuiThemes>
+      <BrowserRouter>
+          <RouteController/>  
+      </BrowserRouter>
+    </MuiThemes>
   </React.StrictMode>,
   document.getElementById('root')
 );

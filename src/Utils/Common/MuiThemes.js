@@ -81,10 +81,10 @@ const MuiThemes = ({ children }) => {
             style: {
               textTransform: "none",
               background: Colors.Grenn,
-              minWidth: 300,
-              fontSize: Sizes.FontSizeLG,
-              fontWeight: "bolder",
-              lineHeight: "80px",
+              minWidth: 200,
+              fontSize: Sizes.FontSizeSM,
+              fontWeight: "bold",
+              lineHeight: "40px",
               borderRadius: 24,
               color: Colors.Black,
               "&:hover": {

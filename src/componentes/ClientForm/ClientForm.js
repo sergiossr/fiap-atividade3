@@ -1,176 +1,243 @@
 import Button from "@mui/material/Button";
-import Input from "../../Utils/Common/Input";
 import './ClientForm.css'
 import { Container} from 'react-bootstrap';
 import * as Yup from "yup";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import UseAPI from '../../Services/APIs/Common/UseAPI';
 import CadastroAPI from "../../Services/APIs/CadastroAPI/CadastroAPI"
-import { Formik, Form} from "formik";
+import { Formik, Form, ErrorMessage} from "formik";
+import { TextField } from "@mui/material";
+import { useLocation } from "react-router-dom";
 
 
 function ClientForm(){
 
-    const getClienteAPI = UseAPI(CadastroAPI.getCliente)
-  
-  useEffect(() => {
-    
-    getClienteAPI
-      .requestPromise()
-      .then((info) => {
-        console.log(info);
-      })
-      .catch((info) => {
-        console.log(info);
-      });
-  }, [])
+    const addressSchema  = Yup.object().shape({
+    email: Yup.string().email("*Campo invalido").required("*Campo obrigatorio"),
+    name: Yup.string().required("*Campo obrigatorio"),
+    numero: Yup.number().required("*Campo obrigatorio").typeError("*Campo invalido"),
+    rua:Yup.string().required("*Campo obrigatorio"),
+    celular: Yup.number().required("*Campo obrigatorio").typeError("*Campo invalido"),
+    bairro:Yup.string().required("*Campo obrigatorio"),
+    cidade: Yup.string().required("*Campo obrigatorio"),
+    });
 
     const NovoCadastroAPI = UseAPI(CadastroAPI.postCliente);
-    const [connectMessage, setConnectMessage] = useState("");
-    const [connectCode, setConnectCode] = useState(0);
-    const [isLoading, setIsLoading] = useState(false);
-    
+    const [isLoading, setIsLoading] = useState(false)
+    const [connectCode, setConnectCode] = useState(0)
 
  
-
-  const onClickCadastro = (values) => {
-    let infoSend = {
+    
+   const onClickCadastro = (values) => {
+    console.log(values)
+    let payload = {
       name: values.name,
       email: values.email,
-      cel: values.cel,
+      celular: values.celular,
       rua: values.rua,
       numero: values.numero,
       bairro: values.bairro,
       cidade: values.cidade,
     };
-    console.log('You clicked submit.');
-    setConnectMessage("");
-    setIsLoading(true);
+    console.log(payload);
+  
+    
+    setConnectCode(0);
+    setIsLoading(true)
     NovoCadastroAPI
-      .requestPromise(infoSend)
-      .then((info) => {
-        setIsLoading(false);
-        console.log(info);
-        setConnectCode(-1);
-        setConnectMessage("Logado com sucesso");
-      })
-      .catch((error) => {
-        setIsLoading(false);
-        setConnectCode(-1);
-        console.log(error.data);
-        if (error.status === 401) {
-          setConnectMessage(error.data.message);
-        } else {
-          setConnectMessage("O servidor retornou um erro= " + error.status);
-        }
-      });
+    .requestPromise(payload)
+    .then(connectSuccess)
+    .catch(connectError);
   };
-  let infoMessage = null;
-  let info = (
-    <div >
-      <Button variant="primary" type="submit" >
+
+    const connectSuccess = (info) => {
+      console.log("Retornando Info");
+      console.log(info.codeInfo.id);
+      setIsLoading(false);
+      if (info.codeInfo.id === 1) {
+        setConnectCode(1);
+        setTimeout(() => { }, 2000);
+      } else {
+        setConnectCode(-1);
+      }
+    };
+  
+    const connectError = (info) => {
+      console.log("Retornando Info Erro");
+      console.log(info);
+      setConnectCode(-1);
+    };
+    
+    let info = (
+    <div className="button">
+      <Button variant="third" type="submit" >
         SALVAR
       </Button>
     </div>
-  );
+    );
 
     return(
         <Container className="clientContainer">
             <h1 className="h1">Dados do Cliente</h1>
             <Formik
                 initialValues={{
-                name: "",
+                name:"",
                 email: "",
-                cel: "",
+                celular: "",
                 rua: "",
                 numero: "",
                 bairro: "",
                 cidade: "",
                 }}
-               
+                validationSchema={addressSchema}
                 onSubmit={onClickCadastro}
             >
 
             
             {(formik) => {
-              const { errors, setFieldValue } = formik;
+              const { errors, setFieldValue, values } = formik;
               return(
                 <Form>
                     
                     <div className="clientForm">
-                        <div className="item1">   
-                            <Input 
-                                type="text"
-                                text="Nome"
-                                name="name"
-                                placeholder="Nome completo"
+                      <div className="item1">
+                            <TextField className="fieldColor"
+                                required
+                                size="small"
+                                id="outlined-required"
+                                label="Nome"
+                                margin="normal"
+                                value={values.name}
                                 onChange={(e) => setFieldValue("name", e.target.value)}
-                            />
-                        </div>
+                            /> 
+                            <span>
+                              <ErrorMessage 
+                                className="errorMessage"
+                                name="name"
+                                component="div"
+                              />
+                            </span>
+                      </div>
                         <div className="item2">
-                            <Input 
-                                type="email"
-                                text="E-mail"
-                                name="email"
-                                placeholder="Insira seu email"
+                            <TextField className="fieldColor"
+                                required
+                                size="small"
+                                id="outlined-required"
+                                label="E-mail"
+                                margin="normal"
+                                value={values.email}
                                 onChange={(e) => setFieldValue("email", e.target.value)} 
                             />
+                          <span>
+                              <ErrorMessage
+                                component="div"
+                                className="errorMessage"
+                                name="email"
+                              />
+                          </span>
                         </div>
-                        <div className="item3">    
-                            <Input 
-                                type="text"
-                                text="Cel"
-                                name="cel"
-                                placeholder="(XX)XXXX-XXXX"
-                                onChange={(e) => setFieldValue("cel", e.target.value)}
+                         <div className="item3">
+                            <TextField className="fieldColor"
+                                required
+                                size="small"
+                                id="outlined-required"
+                                label="Cel.:"
+                                margin="normal"
+                                value={values.celular}
+                                onChange={(e) => setFieldValue("celular", e.target.value)}
                             />   
+                        
+                        <span>
+                              <ErrorMessage
+                                component="div"
+                                className="errorMessage"
+                                name="celular"
+                              />
+                        </span>
                         </div>
                         <div className="item4">
-                            <Input 
-                                type="text"
-                                text="Rua"
-                                name="rua"
-                                placeholder="Insira a Rua"
+                            <TextField className="fieldColor"
+                                required
+                                size="small"
+                                id="outlined-required"
+                                label="Rua:"
+                                margin="normal"
+                                value={values.rua}
                                 onChange={(e) => setFieldValue("rua", e.target.value)}
                             />
+                       
+                        <span>
+                              <ErrorMessage
+                                component="div"
+                                className="errorMessage"
+                                name="rua"
+                              />
+                        </span>
                         </div>
                         <div className="item5">
-                            <Input 
-                                type="text"
-                                text="Numero"
-                                name="numero"
-                                placeholder="N."
+                            <TextField className="fieldColor"
+                                required
+                                size="small"
+                                id="outlined-required"
+                                label="Numero:"
+                                margin="normal"
+                                value={values.numero}
                                 onChange={(e) => setFieldValue("numero", e.target.value)}
                             />
+                        
+                        <span>
+                              <ErrorMessage
+                                component="div"
+                                className="errorMessage"
+                                name="numero"
+                              />
+                        </span>
                         </div>
                         <div className="item6">
-                            <Input 
-                                type="text"
-                                text="Bairro"
-                                name="bairro"
-                                placeholder="Insira o Bairro"
+                            <TextField className="fieldColor"
+                                required
+                                size="small"
+                                id="outlined-required"
+                                label="Bairro:"
+                                margin="normal"
+                                value={values.bairro}
                                 onChange={(e) => setFieldValue("bairro", e.target.value)}
                             />
+                       
+                       <span>
+                              <ErrorMessage
+                                component="div"
+                                className="errorMessage"
+                                name="bairro"
+                              />
+                        </span>
                         </div>
                         <div className="item7">
-                            <Input 
-                                type="text"
-                                text="Cidade"
-                                name="cidade"
-                                placeholder="Insira a cidade"
+                            <TextField className="fieldColor"
+                                required
+                                size="small"
+                                id="outlined-required"
+                                label="Cidade:"
+                                margin="normal"
+                                value={values.cidade}
                                 onChange={(e) => setFieldValue("cidade", e.target.value)}
                             />
-                        </div>
-                        {infoMessage}
-                        {info}
+                       
+                       <span>
+                              <ErrorMessage
+                                component="div"
+                                className="errorMessage"
+                                name="cidade"
+                              />
+                        </span>
+                       </div>
                     </div>
+                    {info}
                 </Form>
               );
             }}
-            </Formik>
-                   
+            </Formik>   
         </Container>    
-        )
-    }
-
+        );
+ }  
 export default ClientForm

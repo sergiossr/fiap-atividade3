@@ -28,7 +28,7 @@ function HomeView(props) {
    
 
     return (
-        <Container maxWidth = 'lg' >
+        <Container maxwidth = 'lg' >
             <Row>
                 <Header />
             </Row>
