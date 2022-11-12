@@ -26,8 +26,8 @@ import { Link} from 'react-router-dom';
                         <Link to = '/monte'>
                            <Button variant= "primary"><h2>Monte Sua Pizza</h2></Button>
                         </Link>
-                        <Link to = '/promo'>
-                           <Button variant= "primary"><h2>Promoções</h2></Button>
+                        <Link to = '/cadastro'>
+                           <Button variant= "primary"><h2>Cadastro</h2></Button>
                         </Link>
                         <Link to ="/pedidos">
                            <Button variant= "primary">

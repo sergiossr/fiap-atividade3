@@ -7,7 +7,8 @@ import UseAPI from '../../Services/APIs/Common/UseAPI';
 import CadastroAPI from "../../Services/APIs/CadastroAPI/CadastroAPI"
 import { Formik, Form, ErrorMessage} from "formik";
 import { TextField } from "@mui/material";
-import { useLocation } from "react-router-dom";
+import { useContext,useEffect } from 'react';
+import { ClienteIDContext } from '../../Store/ClienteIDContext';
 
 
 function ClientForm(){
@@ -23,11 +24,11 @@ function ClientForm(){
     });
 
     const NovoCadastroAPI = UseAPI(CadastroAPI.postCliente);
-    const [isLoading, setIsLoading] = useState(false)
-    const [connectCode, setConnectCode] = useState(0)
-
- 
-    
+    const [isLoading, setIsLoading] = useState(false);
+    const [connectCode, setConnectCode] = useState(0);
+    const context = useContext(ClienteIDContext);
+    const getClienteAPI = UseAPI(CadastroAPI.getCliente);
+  
    const onClickCadastro = (values) => {
     console.log(values)
     let payload = {
@@ -39,34 +40,34 @@ function ClientForm(){
       bairro: values.bairro,
       cidade: values.cidade,
     };
-    console.log(payload);
-  
-    
+
     setConnectCode(0);
     setIsLoading(true)
     NovoCadastroAPI
     .requestPromise(payload)
     .then(connectSuccess)
-    .catch(connectError);
   };
-
+    
     const connectSuccess = (info) => {
       console.log("Retornando Info");
-      console.log(info.codeInfo.id);
-      setIsLoading(false);
-      if (info.codeInfo.id === 1) {
-        setConnectCode(1);
-        setTimeout(() => { }, 2000);
-      } else {
-        setConnectCode(-1);
-      }
-    };
-  
-    const connectError = (info) => {
-      console.log("Retornando Info Erro");
       console.log(info);
-      setConnectCode(-1);
+      context.ID_Cliente = info.id;
+      setIsLoading(false);
     };
+
+    useEffect(() => {
+      getClienteAPI
+        .requestPromise(context.ID_Cliente)
+        .then((info) => {
+          
+          console.log("dentro do getClient usando o ID", info);
+          
+        })
+        .catch((info) => {
+          console.log(info);
+        });
+    })
+
     
     let info = (
     <div className="button">
@@ -92,13 +93,10 @@ function ClientForm(){
                 validationSchema={addressSchema}
                 onSubmit={onClickCadastro}
             >
-
-            
             {(formik) => {
               const { errors, setFieldValue, values } = formik;
               return(
-                <Form>
-                    
+                <Form>   
                     <div className="clientForm">
                       <div className="item1">
                             <TextField className="fieldColor"
@@ -146,7 +144,6 @@ function ClientForm(){
                                 value={values.celular}
                                 onChange={(e) => setFieldValue("celular", e.target.value)}
                             />   
-                        
                         <span>
                               <ErrorMessage
                                 component="div"
@@ -165,7 +162,6 @@ function ClientForm(){
                                 value={values.rua}
                                 onChange={(e) => setFieldValue("rua", e.target.value)}
                             />
-                       
                         <span>
                               <ErrorMessage
                                 component="div"
@@ -184,7 +180,6 @@ function ClientForm(){
                                 value={values.numero}
                                 onChange={(e) => setFieldValue("numero", e.target.value)}
                             />
-                        
                         <span>
                               <ErrorMessage
                                 component="div"
@@ -203,7 +198,6 @@ function ClientForm(){
                                 value={values.bairro}
                                 onChange={(e) => setFieldValue("bairro", e.target.value)}
                             />
-                       
                        <span>
                               <ErrorMessage
                                 component="div"
@@ -222,7 +216,6 @@ function ClientForm(){
                                 value={values.cidade}
                                 onChange={(e) => setFieldValue("cidade", e.target.value)}
                             />
-                       
                        <span>
                               <ErrorMessage
                                 component="div"
@@ -233,10 +226,13 @@ function ClientForm(){
                        </div>
                     </div>
                     {info}
+                    
                 </Form>
               );
             }}
-            </Formik>   
+            </Formik>  
+            
+               
         </Container>    
         );
  }  

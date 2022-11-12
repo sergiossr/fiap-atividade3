@@ -1,11 +1,4 @@
-.titulo{
-    margin-bottom: 10px;
-    justify-content: center;
-    align-content: center;
-    display: flex;
-    flex: 1;
-    font-weight: bold;
-}
+
 
 .AdicionarBTN{
     display: flex;
@@ -13,3 +6,11 @@
     align-items: center;
     flex: 1;
 }
+
+.containerCards{
+    margin: 0 auto;
+    justify-content: center;
+    width:fit-content;
+}
+
+

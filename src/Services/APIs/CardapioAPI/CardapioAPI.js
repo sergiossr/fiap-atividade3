@@ -1,11 +1,10 @@
 import API from "../Common/api";
 
 const getCardapio = () => API.get("/pizzas");
-// const getPersons = (payload) =>
-//   api.post("/persons/getPersons", payload, { headers: { "Content-Type": "application/json" } });
-
+const getPizza = (id) => API.get("/pizza/"+id);
 
 const exportedObject = {
-    getCardapio
+    getCardapio,
+    getPizza
 };
 export default exportedObject;

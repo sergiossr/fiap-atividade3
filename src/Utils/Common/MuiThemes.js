@@ -32,7 +32,7 @@ const MuiThemes = ({ children }) => {
         fontSize: Sizes.FontSizeXS,
       },
     },
-    
+
     components: {
       MuiButton: {
         variants: [
@@ -51,7 +51,7 @@ const MuiThemes = ({ children }) => {
               "&:hover": {
                 color: Colors.White,
               },
-              
+
             },
           },
           {
@@ -59,7 +59,7 @@ const MuiThemes = ({ children }) => {
             style: {
               textTransform: "none",
               background: Colors.Grenn,
-              
+
               minWidth: 200,
               fontSize: Sizes.FontSizeSM,
               fontWeight: "bold",

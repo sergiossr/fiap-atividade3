@@ -8,10 +8,12 @@ const config = {
 };
 
 const postCliente = (payload) => API.post("/cliente/create", payload);
-const getCliente = () => API.get("/clientes");
+const getClientes = () => API.get("/clientes");
+const getCliente = (id) => API.get("/cliente/" + id);
 
 const exportedObject = {
-    postCliente,
-    getCliente
+  postCliente,
+  getCliente,
+  getClientes
 };
 export default exportedObject;
