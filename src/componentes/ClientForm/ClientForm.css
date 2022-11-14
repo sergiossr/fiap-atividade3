@@ -107,3 +107,10 @@
     font-size: 14px;
     margin-top: 0px;
 }
+
+.alerta {
+    justify-content: center;
+    align-content: center;
+    width: fit-content;
+    margin: 0 auto;
+}

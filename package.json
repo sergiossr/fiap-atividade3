@@ -84,6 +84,9 @@
   "react-scripts": "5.0.1",
   
     
+  "react-toastify": "^9.1.1",
+  
+    
   "reactstrap": "^9.1.4",
   
     
