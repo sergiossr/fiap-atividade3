@@ -16,10 +16,22 @@ body {
 .MonteContainer{
   display: flex;
   justify-content: center;
-  margin-top: 200px;
-  margin-bottom: 300px;  
 }
 
+.MonteColunaIngredientes {
+  padding-right: 8em;
+  min-width: 25em;
+}
 
+.FazerPedidoBTN{
+  display: flex;
+  align-items:center;
+  justify-content:center;
+  color: #7CE47A;
+}
+
+.CardResumo{
+  width: 300px;
+}
 
 

@@ -1,38 +1,30 @@
 .CartContainer{
-        height:90%;
-        width:auto;
-        border: 1px solid #000000;
-        background-color: #C4C4C4;
-        border-radius: 40px;
-        margin-left: 15px;
-        margin-top: 50px;
-        display: flex;
-        align-items: center;   
-        justify-content: center; 
+    width: 400px;
+    border: 1px solid #000000;
+    background-color: #C4C4C4;
+    border-radius: 40px;
+    margin-left: 15px;
+    margin-top: 50px;
+    padding-bottom: 15px;
+    display: flex;
+    align-items: center;   
+    justify-content: center; 
 }
 
 .FazerPedidoBTN{
-    display: flex;
-    align-items:center;
-    justify-content:center;
-    flex: 1;
-    margin-top: 20px;
+display: flex;
+align-items:center;
+justify-content:center;
+flex: 1;
+margin-top: 20px;
 }
 
 .InsideContainer{
-    width:auto;
-    height: 85%;
-    margin: 0 auto;
-    border: 1px solid #000000;
-    background-color:white;
-    border-radius: 40px;
-    display: flex;
-    justify-content: center;
-}
-
-.titulo{
-    justify-content: center;
-    align-content: center;
-    display: flex;
-    flex: 1;
+padding: 20px;
+width: 350px;
+height: flex;
+margin: 0 auto;
+border-radius: 40px;
+display: flex;
+justify-content: center;
 }
