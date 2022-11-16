@@ -1,0 +1,36 @@
+.CardapioContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 0;
+    margin-right: 0;
+    align-items: center;
+}
+
+.ConfirmarBTN{
+    display: flex;
+    align-items:center;
+    justify-content:center;
+    flex: 1;
+    }
+
+    .titulo{
+        margin-bottom: 10px;
+        justify-content: center;
+        align-content: center;
+        display: flex;
+        flex: 1;
+        font-weight: bold;
+    }
+    
+    .AdicionarBTN{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex: 1;
+    }
+
+    .loadingCircle {
+        margin: auto;
+        width: 50%;
+    }
