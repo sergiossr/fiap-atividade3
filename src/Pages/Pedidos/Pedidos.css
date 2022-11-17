@@ -27,14 +27,14 @@
     flex: 1;
 }
 
-.detalheContainer {
-
-    width: 300px;
-    height: auto;
-    border: 1px solid #000000;
-    background-color: #DECFCF;
-    margin-left: 100px;
-    margin-top: 20px;
+.InsideContainer {
+    padding: 20px;
+    width: fit-content;
+    height: flex;
+    margin: 0 auto;
+    border-radius: 40px;
+    display: flex;
+    justify-content: center;
 }
 
 .clienteInfoContainer {

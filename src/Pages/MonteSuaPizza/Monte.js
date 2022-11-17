@@ -29,7 +29,7 @@ import CartBox from '../../componentes/CartBox/CartBox';
 import { useAtom } from 'jotai'
 import { pizzaMontadaAtom } from '../../Atoms/pizzaMontadaAtom'
 
-function MonteView() {
+function Monte() {
 
     const [expanded, setExpanded] = React.useState(false);
     const [pizzasMontadasCarrinho, setpizzasMontadasCarrinho] = useAtom(pizzaMontadaAtom);
@@ -225,4 +225,4 @@ function MonteView() {
     );
 }
 
-export default MonteView;
+export default Monte;

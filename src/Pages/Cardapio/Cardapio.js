@@ -23,7 +23,7 @@ import { useAtom } from 'jotai'
 import { pizzaCardapioAtom } from '../../Atoms/pizzaCardapioAtom'
 
 
-function CardapioView() {
+function Cardapio() {
 
     const [data, setLista] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -237,4 +237,4 @@ function CardapioView() {
     );
 }
 
-export default CardapioView;
+export default Cardapio;

@@ -34,7 +34,7 @@ function ClientForm() {
   }
 
   const onClickCadastro = (values) => {
-    console.log(values)
+    //console.log(values)
     let payload = {
       name: values.name,
       email: values.email,
@@ -81,7 +81,7 @@ function ClientForm() {
       <Alert className="alerta" severity="success">{successConnectText}</Alert>
     )
   } else {
-    if (connectCode !== 0){
+    if (connectCode !== 0) {
       alerta = (
         <Alert className="alerta" severity="error">{failedConnectText}</Alert>
       )

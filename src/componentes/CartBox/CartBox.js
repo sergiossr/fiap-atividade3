@@ -1,9 +1,6 @@
 import React from 'react';
-
 import './CartBox.css';
-
 import { Link } from 'react-router-dom';
-
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import Table from '@mui/material/Table';
@@ -14,10 +11,8 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Typography } from '@mui/material';
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
-
 import { useAtom } from 'jotai'
 import { pizzaCardapioAtom } from '../../Atoms/pizzaCardapioAtom'
 import { pizzaMontadaAtom } from '../../Atoms/pizzaMontadaAtom'
@@ -150,9 +145,6 @@ const CartBox = () => {
                 }
                 {
                     pizzasCardapioCarrinho.length > 0 || pizzasMontadasCarrinho.length > 0 ?
-
-
-
 
                         <div className='FazerPedidoBTN'>
                             <Link to='/cadastro'>

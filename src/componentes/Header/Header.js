@@ -1,16 +1,10 @@
 import React from 'react';
-//Importa o CSS
 import './Header.css';
-//Importa os Componentes do BootStrap 
 import Button from "@mui/material/Button";
 import { Link } from 'react-router-dom';
-
 import { Row, Col, Container } from 'react-bootstrap';
-//Importa os Componentes do FontAwesome 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
-
-
 
 const Header = () => {
    return (
